@@ -4,7 +4,7 @@ type Sexo = 'M' | 'F';
 
 type ClienteStatus = 'A' | 'I' | 'E';
 
-export interface EnderecoResponse {
+export interface ClienteEnderecoRequest {
     cep: string;
     rua: string;
     numero: number;
@@ -15,12 +15,12 @@ export interface EnderecoResponse {
 
 }
 
-export interface ClienteResponse {
+export interface ClienteRequest {
   id: number;
   nome: string;
   email: string;
   cpf: string;
-  endereco: EnderecoResponse;
+  endereco: ClienteEnderecoRequest;
   telefone: string;
   sexo: Sexo;
   dataNascimento: Date;

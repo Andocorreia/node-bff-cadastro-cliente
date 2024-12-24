@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { ConsultaClienteRepository } from './java-srv-cadastro-cliente/consulta.cliente.repository';
+import { ClienteRepository } from './java-srv-cadastro-cliente/cliente.repository';
 import { HttpModule } from '@nestjs/axios';
 
 @Module({
     imports: [HttpModule],
     controllers: [],
-    providers: [ConsultaClienteRepository],
-    exports: [ConsultaClienteRepository],
+    providers: [ClienteRepository],
+    exports: [ClienteRepository],
 })
 export class RepositoryModule {}

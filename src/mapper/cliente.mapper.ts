@@ -1,40 +1,34 @@
-import { ClienteResponse } from 'src/controller/response/consulta.cliente.response';
+import { ClienteRequest } from 'src/controller/request/cliente.request';
+import { ClienteResponse } from 'src/controller/response/cliente.response';
 import { ClienteModel } from 'src/model/cliente.model';
-import { ClienteRepositoryResponse } from 'src/repository/java-srv-cadastro-cliente/response/consulta.cliente.repository.response';
+import { ClienteRepositoryRequest } from 'src/repository/java-srv-cadastro-cliente/request/cliente.repository.request';
+import { ClienteRepositoryResponse } from 'src/repository/java-srv-cadastro-cliente/response/cliente.repository.response';
 
 export class ClienteMapper {
     constructor() {
     }
     
-    public static mapToClienteResponse(cliente :ClienteModel): ClienteResponse {
-        return {
-            id: cliente.id,
-            nome: cliente.nome,
-            email: cliente.email,
-            cpf: cliente.cpf,
-            endereco: cliente.endereco,
-            telefone: cliente.telefone,
-            sexo: cliente.sexo,
-            dataNascimento: cliente.dataNascimento,
-            dataCadastro: cliente.dataCadastro,
-            estadoCivil: cliente.estadoCivil,
-            status: cliente.status
-        };
+    public static mapModelToClienteResponse(cliente :ClienteModel): ClienteResponse {
+        return cliente;
     } 
-    
-    public static mapToClienteModel(clientes: ClienteRepositoryResponse[]): Array<ClienteModel> {
-        return clientes.map(cliente => ({
-            id: cliente.id,
-            nome: cliente.nome,
-            email: cliente.email,
-            cpf: cliente.cpf,
-            endereco: cliente.endereco,
-            telefone: cliente.telefone,
-            sexo: cliente.sexo,
-            dataNascimento: cliente.dataNascimento,
-            dataCadastro: cliente.dataCadastro,
-            estadoCivil: cliente.estadoCivil,
-            status: cliente.status
-        }));
+
+    public static mapModelToClienteRepositoryrequest(cliente: ClienteModel): ClienteRepositoryRequest {
+        return cliente;
     }
+    
+    public static mapRepositoryResponseToClienteModelList(clientes: ClienteRepositoryResponse[]): Array<ClienteModel> {
+        return clientes.map(cliente => 
+            ClienteMapper.mapRepositoriResponseToClienteModel(cliente)
+        );
+    }
+
+    public static mapRepositoriResponseToClienteModel(cliente: ClienteRepositoryResponse): ClienteModel {
+        return cliente;
+    }
+    
+    public static mapRequestToClienteModel(cliente: ClienteRequest): ClienteModel {
+        return cliente;
+    }
+
+
 }
