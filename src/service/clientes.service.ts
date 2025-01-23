@@ -23,4 +23,8 @@ export class ClientesService {
         return this.consultaClienteRepository.updateCliente(cliente);
     }
 
+    createCliente(cliente: ClienteModel): void {
+        this.consultaClienteRepository.createCliente(cliente);
+    }
+
 }

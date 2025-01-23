@@ -55,4 +55,15 @@ export class ClienteRepository {
             throw new Error('Não foi possível atualizar o cliente.');
         }
     }
+
+    createCliente(cliente: ClienteModel) : void {
+        const url = `${process.env.JAVA_SRV_CADASTRO_CLIENTE}/api/v1/cadastrar-cliente`;
+        try {
+            const request : ClienteRepositoryRequest = ClienteMapper.mapModelToClienteRepositoryrequest(cliente);
+            firstValueFrom(this.httpService.post(url, request));
+        } catch (error) {
+            console.error('Erro ao criar cliente:', error);
+            throw new Error('Não foi possível criar o cliente.');
+        }
+    }
 }

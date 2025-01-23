@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ClientesService } from 'src/service/clientes.service';
 import { ClienteResponse } from './response/cliente.response';
 import { ClienteMapper } from 'src/mapper/cliente.mapper';
@@ -29,6 +29,13 @@ export class ClientesController {
         const cliente = ClienteMapper.mapRequestToClienteModel(clienteRequest);
         const updatedCliente  = await this.clienteService.updateCliente(cliente)
         return ClienteMapper.mapModelToClienteResponse(updatedCliente);        
+    }
+
+    @Post('/cadastrar-cliente')
+    createCliente(@Body() clienteRequest: ClienteRequest) : void {
+        const cliente = ClienteMapper.mapRequestToClienteModel(clienteRequest);
+       this.clienteService.createCliente(cliente)
+        
     }
 
 }
